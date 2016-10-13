@@ -4,9 +4,18 @@ import java.util.List;
 import java.util.Stack;
 
 
-//main file for leetCode
+/**main file for leetCode
+ * 
+ * @author zlin3000
+ *
+ */
 public class Main {
 	
+	/**
+	 * 
+	 * data structure part
+	 *
+	 */
 	public class ListNode {
 		int val;
 		ListNode next;
