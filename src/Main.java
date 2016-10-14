@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
+
 
 
 /**main file for leetCode
@@ -28,7 +28,8 @@ public class Main {
 	    TreeNode right;
 	    TreeNode(int x) { val = x; }
 	 }
-
+//``--------------------------------------------------------------------------------------------------------------------
+	
 	
 	/**82. Remove Duplicates from Sorted List II: 1ms
 	 * 
@@ -174,6 +175,30 @@ public class Main {
 		
 	}
 	
+	
+	/**104. Maximum Depth of Binary Tree: 1ms
+	 * 
+	 */
+	public int maxDepth(TreeNode root) {
+        if(root == null){
+        	return 0;
+        }
+        
+        if(root.left == null && root.right == null){
+        	return 1;
+        }
+        else if(root.left == null){
+        	return maxDepth(root.right)+1;
+        }
+        else if(root.right == null){
+        	return maxDepth(root.left)+1;
+        }
+        else{
+        	return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+        }
+    }
+	
+	
 	/**111. Minimum Depth of Binary Tree:1ms
 	 * 
 	 */
@@ -196,6 +221,21 @@ public class Main {
         
         
     }
+	
+	/**136. Single Number:1ms
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	static public int singleNumber(int[] nums) {
+		int out = 0;
+		for(int i = 0; i < nums.length; i++){
+			out ^= nums[i];
+		}
+		
+        return out;
+    }
+	
 	
 	/**165. Compare Version Numbers: 1ms
 	 * 
@@ -246,7 +286,7 @@ public class Main {
 
     }
 	
-	/**169. Majority Element
+	/**169. Majority Element: 2ms
 	 * 
 	 * @param nums
 	 * @return
@@ -260,6 +300,27 @@ public class Main {
 	 * see BSTIterator
 	 */
 	
+	/**258. Add Digits: 2ms
+	 * 
+	 * @param num
+	 * @return
+	 */
+	static public int addDigits(int num) {
+	
+		while(num > 9){
+			int res = 0;
+			
+			while(num > 0){
+				res += num%10;
+				num /= 10;
+			}			
+			num = res;					
+		}
+		
+		return num;
+		//return num - 9*((num -1)/9);
+        
+    }
     
     
 	/**292. Nim Game: 0ms
@@ -298,6 +359,27 @@ public class Main {
     }
 	
 	
+	/**371. Sum of Two Integers: 0ms
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 * 
+	 * 
+	 * a^b would get all bit numbers 1 that do not need to be shift
+	 * a&b would get all bit numbers that are same, which would be shift to left with 1 position
+	 * 
+	 * put them together until a&b << 1 reach 0 would finish the calculation
+	 * 
+	 * 
+	 * 
+	 */
+	static public int getSum(int a, int b) {
+		return b == 0? a : getSum(a^b,(a&b) << 1);       
+    }
+	
+	
+	//-------------------------------------------------------------
 	
 	static public String convert(String s, int numRows) {
 		
@@ -309,7 +391,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(addDigits(38));
 	}
 
 }
