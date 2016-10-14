@@ -1,1 +1,3 @@
 # JavaCoder
+
+solutions of leetcode
