@@ -379,6 +379,59 @@ public class Main {
     }
 	
 	
+	/**389. Find the Difference: 7ms
+	 * 
+	 * @param s
+	 * @param t
+	 * @return
+	 */
+	public char findTheDifference(String s, String t) {
+		char out = 0;
+		
+		for(int x = 0; x < s.length(); x++){
+			out ^= (s.charAt(x)^ t.charAt(x));
+		}
+		
+		out ^= t.charAt(t.length()-1);
+
+        return out;
+        
+    }
+	
+	
+	
+	/**412. Fizz Buzz: 5ms
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public List<String> fizzBuzz(int n) {
+        List<String> sList = new ArrayList<>(n);
+        if(n < 1){
+            return null;
+        }
+        
+        for(int x = 1; x <= n; x++){
+            if(x%3 == 0 && x%5 == 0){
+                sList.add("FizzBuzz");
+            }
+            else if( x%3 == 0){
+                sList.add("Fizz");
+            }
+            else if( x%5 == 0){
+                sList.add("Buzz");
+            }
+            else{
+                sList.add(x+"");
+            }
+        }
+        
+        return sList;
+        
+    }
+	
+	
+	
 	//-------------------------------------------------------------
 	
 	static public String convert(String s, int numRows) {
